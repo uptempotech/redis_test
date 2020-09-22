@@ -5,10 +5,11 @@ import (
 
 	"github.com/uptempotech/redistest/global"
 	"github.com/uptempotech/redistest/models"
+	"github.com/uptempotech/redistest/services"
 )
 
 func main() {
-	redisClient := models.NewRedisClient()
+	redisClient := services.NewRedisClient()
 
 	key1 := "sampleKey"
 	value1 := &models.ValueEx{Name: "someName", Email: "someemail@abc.com"}

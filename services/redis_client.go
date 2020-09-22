@@ -1,4 +1,4 @@
-package models
+package services
 
 import (
 	"context"
@@ -6,6 +6,7 @@ import (
 	"time"
 
 	"github.com/go-redis/redis/v8"
+	"github.com/uptempotech/redistest/global"
 )
 
 // RedisClient .
@@ -16,9 +17,9 @@ type RedisClient struct {
 // NewRedisClient .
 func NewRedisClient() *RedisClient {
 	client := redis.NewClient(&redis.Options{
-		Addr:     "localhost:6379",
-		Password: "",
-		DB:       0,
+		Addr:     global.RedisHost,
+		Password: global.RedisPassword,
+		DB:       global.DefaultDB,
 	})
 
 	if err := client.Ping(context.Background()).Err(); err != nil {
